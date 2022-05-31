@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>F-Cut</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <script type="text/javascript" src="medidas.js"></script>
+    <script type="text/javascript" src="size.point.js"></script>
+    <script type="text/javascript" src="ajust.cut.js"></script>
+    <script type="text/javascript" src="ajust.move.js"></script>
+    <script type="text/javascript" src="rule_45deg.js"></script>
+</head>
+
+<body oncontextmenu="false">
+
+
+    <span id="lt" class="sizes-viewport" angle="true"></span>
+    <span id="rt" class="sizes-viewport" angle="true"></span>
+    <span id="rb" class="sizes-viewport" angle="true"></span>
+    <span id="lb" class="sizes-viewport" angle="true"></span>
+
+    <span id="l" class="sizes-viewport" angle="false"></span>
+    <span id="t" class="sizes-viewport" angle="false"></span>
+    <span id="r" class="sizes-viewport" angle="false"></span>
+    <span id="b" class="sizes-viewport" angle="false"></span>
+
+    <div id="opacity" scalingAndMove="true"></div>
+
+    <div id="holder_foto" scalingAndMove="true">
+        <span id="lt-svg"></span>
+        <span id="rt-svg"></span>
+        <span id="rb-svg"></span>
+        <span id="lb-svg"></span>
+
+        <span id="l-svg"></span>
+        <span id="t-svg"></span>
+        <span id="r-svg"></span>
+        <span id="b-svg"></span>
+
+        <span id="line-w"></span>
+        <span id="line-h"></span>
+    </div>
+
+    <div id="cut">
+        <div id="foto-move">
+            <div id="foto-rotate">
+                <img id="foto">
+            </div>
+        </div>
+    </div>
+
+
+    <div id="size_div"></div>
+
+
+    <div id="bottomBar">
+        <rule-45deg>
+
+        </rule-45deg>
+    </div>
+
+</body>
+
+</html>
+
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+        outline: none;
+        user-select: none;
+    }
+    
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        background: #444;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    #opacity {
+        width: 100%;
+        height: 100%;
+        background: #000;
+        position: absolute;
+        opacity: 0.8;
+        z-index: 2;
+    }
+    
+    #canvas {
+        width: 100%;
+        height: 100%;
+    }
+    
+    #cut {
+        position: absolute;
+        z-index: 1;
+        max-width: calc(100% - 20px);
+        max-height: calc(100% - 110px);
+    }
+    
+    #holder_foto {
+        width: 100%;
+        height: 100%;
+        outline: #4499ff 2px solid;
+        position: absolute;
+        z-index: 3;
+    }
+    
+    #foto {
+        display: block;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        position: relative;
+    }
+    
+    #foto-trotate {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background: #ff0;
+    }
+    
+    #foto-move {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        opacity: 1;
+        position: relative;
+        background: #f00;
+    }
+    
+    #size_div {
+        position: absolute;
+        z-index: -100;
+        max-width: calc(100% - 20px);
+        max-height: calc(100% - 110px);
+        outline: none;
+        opacity: 0;
+    }
+    
+    [angle='true'] {
+        width: 40px;
+        height: 40px;
+        display: block;
+        background: none;
+        position: absolute;
+        z-index: 4;
+    }
+    
+    [angle='false'] {
+        width: 40px;
+        height: 40px;
+        display: block;
+        background: none;
+        position: absolute;
+        z-index: 4;
+    }
+    
+    #lt,
+    #rt {
+        top: 0px;
+    }
+    
+    #lt,
+    #lb {
+        left: 0px;
+    }
+    
+    #rt,
+    #rb {
+        right: 0px;
+    }
+    
+    #lb,
+    #rb {
+        bottom: 0px;
+    }
+    
+    #lt-svg {
+        position: absolute;
+        left: -10px;
+        top: -10px;
+        width: 20px;
+        height: 20px;
+        display: block;
+        background: #4499ff;
+        border-radius: 3px;
+    }
+    
+    #rt-svg {
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        width: 20px;
+        height: 20px;
+        display: block;
+        background: #4499ff;
+        border-radius: 3px;
+    }
+    
+    #rb-svg {
+        position: absolute;
+        right: -10px;
+        bottom: -10px;
+        width: 20px;
+        height: 20px;
+        display: block;
+        background: #4499ff;
+        border-radius: 3px;
+    }
+    
+    #lb-svg {
+        position: absolute;
+        left: -10px;
+        bottom: -10px;
+        width: 20px;
+        height: 20px;
+        display: block;
+        background: #4499ff;
+        border-radius: 3px;
+    }
+    
+    #line-w {
+        position: absolute;
+        left: 0px;
+        bottom: calc(100% / 3);
+        width: 100%;
+        height: calc(100% / 3);
+        display: block;
+        outline: #4499ff 2px solid;
+    }
+    
+    #line-h {
+        position: absolute;
+        top: 0px;
+        left: calc(100% / 3);
+        height: 100%;
+        width: calc(100% / 3);
+        display: block;
+        outline: #4499ff 2px solid;
+    }
+    
+    #l-svg {
+        position: absolute;
+        top: calc(50% - 20px);
+        left: -2.5px;
+        height: 40px;
+        width: 5px;
+        display: block;
+        background: #4499ff;
+        border-radius: 3px;
+    }
+    
+    #t-svg {
+        position: absolute;
+        left: calc(50% - 20px);
+        top: -2.5px;
+        width: 40px;
+        height: 5px;
+        display: block;
+        background: #4499ff;
+        border-radius: 3px;
+    }
+    
+    #r-svg {
+        position: absolute;
+        top: calc(50% - 20px);
+        right: -2.5px;
+        height: 40px;
+        width: 5px;
+        display: block;
+        background: #4499ff;
+        border-radius: 3px;
+    }
+    
+    #b-svg {
+        position: absolute;
+        left: calc(50% - 20px);
+        bottom: -2.5px;
+        width: 40px;
+        height: 5px;
+        display: block;
+        background: #4499ff;
+        border-radius: 3px;
+    }
+    
+    #bottomBar::-webkit-scrollbar {
+        display: none;
+    }
+    
+    #bottomBar {
+        position: absolute;
+        width: 100%;
+        height: 30px;
+        bottom: 10px;
+        left: 0px;
+        z-index: 5;
+    }
+</style>
+
+
+
+<script>
+    let foto_rotate = document.querySelector("#foto-rotate");
+    let foto_move = document.querySelector("#foto-move");
+    let holder_foto = document.querySelector("#holder_foto");
+    let opacity = document.querySelector("#opacity");
+    let size_div = document.querySelector("#size_div");
+    let body = document.querySelector("body");
+    let foto = document.querySelector("#foto");
+    let cut = document.querySelector("#cut");
+    let size = document.querySelectorAll(".sizes-viewport");
+
+
+
+
+
+    foto.src = "a.jpg";
+
+    foto.onload = function() {
+        load()
+    }
+    window.onresize = function() {
+        load()
+    }
+
+    function load() {
+        ajustCut();
+        ajustPointSize();
+    }
+</script>
