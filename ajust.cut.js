@@ -14,22 +14,6 @@ function ajustCut() {
 
     foto.style.position = "absolute";
 
-    foto_move.style.width = cut.clientWidth + px;
-    foto_move.style.height = cut.clientHeight + px;
-
-    foto_move.style.minWidth = cut.clientWidth + px;
-    foto_move.style.minHeight = cut.clientHeight + px;
-    foto_move.style.position = "absolute";
-
-
-    foto_rotate.position = "absolute";
-
-    foto_rotate.style.width = cut.clientWidth + px;
-    foto_rotate.style.height = cut.clientHeight + px;
-
-    foto_rotate.style.minWidth = cut.clientWidth + px;
-    foto_rotate.style.minHeight = cut.clientHeight + px;
-    foto_rotate.style.position = "absolute";
 
 
     ajustHolderFotoCut(cut);

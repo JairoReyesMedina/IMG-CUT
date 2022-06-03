@@ -122,35 +122,26 @@ function size_end() {
 
 
     if (id[0] == "L") {
-        foto_move.style.right = new absolute(foto_move).right() + px;
-        foto_move.style.left = "auto"
         foto.style.right = new absolute(foto).right() + px;
         foto.style.left = "auto"
     } else if (id[0] == "R") {
-        foto_move.style.left = new absolute(foto_move).left() + px;
-        foto_move.style.right = "auto"
         foto.style.left = new absolute(foto).left() + px;
         foto.style.right = "auto"
     }
     if (id[1] == "T") {
-        foto_move.style.bottom = new absolute(foto_move).bottom() + px;
-        foto_move.style.top = "auto"
         foto.style.bottom = new absolute(foto).bottom() + px;
         foto.style.top = "auto"
     } else if (id[1] == "B") {
-        foto_move.style.top = new absolute(foto_move).top() + px;
-        foto_move.style.bottom = "auto"
         foto.style.top = new absolute(foto).top() + px;
         foto.style.bottom = "auto"
     }
 
 
 
-    foto_move.style.height = new absolute(foto_move).height() + px;
-    foto_move.style.width = new absolute(foto_move).width() + px;
+    foto.style.height = new absolute(foto).height() + px;
+    foto.style.width = new absolute(foto).width() + px;
 
 
-    foto_move.style.transition = "ease 0.5s"
     foto.style.transition = "ease 0.5s"
     cut.style.transition = "ease 0.5s"
     opacity.style.transition = "ease 0.5s"
@@ -180,16 +171,13 @@ function size_end() {
         cut.style.width = wc + px
         cut.style.height = hc + px;
 
-        foto_move.style.maxWidth = "500000000000000000px"
-        foto_move.style.maxHeight = "500000000000000000px"
+        foto.style.maxWidth = "500000000000000000px"
+        foto.style.maxHeight = "500000000000000000px"
 
-        let wf = new absolute(foto_move).width();
+        let wf = new absolute(foto).width();
         wf *= (factor)
-        let hf = new absolute(foto_move).height();
+        let hf = new absolute(foto).height();
         hf *= (factor)
-
-        foto_move.style.width = wf + px;
-        foto_move.style.height = hf + px;
 
         foto.style.width = wf + px;
         foto.style.height = hf + px;
@@ -210,14 +198,13 @@ function size_end() {
         cut.style.width = wc + px
         cut.style.height = hc + px;
 
-        foto_move.style.maxWidth = "500000000000000000px"
-        foto_move.style.maxHeight = "500000000000000000px"
-        let wf = new absolute(foto_move).width();
+        foto.style.maxWidth = "500000000000000000px"
+        foto.style.maxHeight = "500000000000000000px"
+
+        let wf = new absolute(foto).width();
         wf *= (factor)
-        let hf = new absolute(foto_move).height();
+        let hf = new absolute(foto).height();
         hf *= (factor)
-        foto_move.style.width = wf + px;
-        foto_move.style.height = hf + px;
 
         foto.style.width = wf + px;
         foto.style.height = hf + px;
@@ -237,14 +224,13 @@ function size_end() {
         cut.style.width = wc + px
         cut.style.height = hc + px;
 
-        foto_move.style.maxWidth = "500000000000000000px"
-        foto_move.style.maxHeight = "500000000000000000px"
-        let wf = new absolute(foto_move).width();
+        foto.style.maxWidth = "500000000000000000px"
+        foto.style.maxHeight = "500000000000000000px"
+
+        let wf = new absolute(foto).width();
         wf *= (factor)
-        let hf = new absolute(foto_move).height();
+        let hf = new absolute(foto).height();
         hf *= (factor)
-        foto_move.style.width = wf + px;
-        foto_move.style.height = hf + px;
 
         foto.style.width = wf + px;
         foto.style.height = hf + px;
@@ -258,83 +244,77 @@ function size_end() {
 
 
 
-    let fright = new absolute(foto_move).right()
+    let fright = new absolute(foto).right()
     fright *= factor;
-    let fleft = new absolute(foto_move).left()
+    let fleft = new absolute(foto).left()
     fleft *= factor;
-    let ftop = new absolute(foto_move).top()
+    let ftop = new absolute(foto).top()
     ftop *= factor;
-    let fbottom = new absolute(foto_move).bottom()
+    let fbottom = new absolute(foto).bottom()
     fbottom *= factor;
 
     if (id.length == 2 && id[0] == "L") {
         cut.style.right = new absolute(size_div).right() + px;
-        foto_move.style.right = fright + px
+        foto.style.right = fright + px
     } else if (id.length == 2 && id[0] == "R") {
         cut.style.left = new absolute(size_div).left() + px;
-        foto_move.style.left = fleft + px
+        foto.style.left = fleft + px
     }
 
     if (id.length == 2 && id[1] == "T") {
         cut.style.bottom = new absolute(size_div).bottom() + px;
-        foto_move.style.bottom = fbottom + px
+        foto.style.bottom = fbottom + px
     } else if (id.length == 2 && id[1] == "B") {
         cut.style.top = new absolute(size_div).top() + px;
-        foto_move.style.top = ftop + px
+        foto.style.top = ftop + px
     }
 
     if (id.length == 1 && id[0] == "L") {
         cut.style.right = new absolute(size_div).right() + px;
-        foto_move.style.right = fright + px
+        foto.style.right = fright + px
         cut.style.bottom = new absolute(size_div).bottom() + px;
-        foto_move.style.bottom = fbottom + px
+        foto.style.bottom = fbottom + px
         cut.style.top = new absolute(size_div).top() + px;
-        foto_move.style.top = ftop + px
+        foto.style.top = ftop + px
     }
 
     if (id.length == 1 && id[0] == "R") {
         cut.style.left = new absolute(size_div).left() + px;
-        foto_move.style.left = fleft + px
+        foto.style.left = fleft + px
         cut.style.bottom = new absolute(size_div).bottom() + px;
-        foto_move.style.bottom = fbottom + px
+        foto.style.bottom = fbottom + px
         cut.style.top = new absolute(size_div).top() + px;
-        foto_move.style.top = ftop + px
+        foto.style.top = ftop + px
     }
 
     if (id.length == 1 && id[0] == "T") {
         cut.style.right = new absolute(size_div).right() + px;
-        foto_move.style.right = fright + px
+        foto.style.right = fright + px
         cut.style.left = new absolute(size_div).left() + px;
-        foto_move.style.left = fleft + px
+        foto.style.left = fleft + px
         cut.style.bottom = new absolute(size_div).bottom() + px;
-        foto_move.style.bottom = fbottom + px
+        foto.style.bottom = fbottom + px
     }
 
     if (id.length == 1 && id[0] == "B") {
         cut.style.right = new absolute(size_div).right() + px;
-        foto_move.style.right = fright + px
+        foto.style.right = fright + px
         cut.style.left = new absolute(size_div).left() + px;
-        foto_move.style.left = fleft + px
+        foto.style.left = fleft + px
         cut.style.top = new absolute(size_div).top() + px;
-        foto_move.style.top = ftop + px
+        foto.style.top = ftop + px
     }
 
     setTimeout(() => {
         cut.style.transition = "ease 0s"
-        foto_move.style.transition = "ease 0s"
         foto.style.transition = "ease 0s"
         opacity.style.transition = "ease 0s"
         holder_foto.style.transition = "ease 0s"
 
-        foto_move.style.left = new absolute(foto_move).left() + px;
-        foto_move.style.top = new absolute(foto_move).top() + px;
-        foto_move.style.right = new absolute(foto_move).right() + px;
-        foto_move.style.bottom = new absolute(foto_move).bottom() + px;
-
         foto.style.left = new absolute(foto).left() + px;
         foto.style.top = new absolute(foto).top() + px;
         foto.style.right = new absolute(foto).right() + px;
-        foto.style.bottom = new absolute(foto_move).bottom() + px;
+        foto.style.bottom = new absolute(foto).bottom() + px;
 
         ajustHolderFotoCut(cut)
         clip(cut)
@@ -349,39 +329,73 @@ function size_end() {
 
 
 function staticPosInvert(e) {
-    if (e[0] == "L") {
+    if (e.length == 2 && e[0] == "L") {
         cut.style.right = new absolute(cut).right() + px;
         cut.style.left = auto;
-        foto_move.style.right = new absolute(foto_move).right() + px;
-        foto_move.style.left = auto;
-        foto_rotate.style.right = new absolute(foto_rotate).right() + px;
-        foto_rotate.style.left = auto;
-
-    } else if (e[0] == "R") {
+        foto.style.right = new absolute(foto).right() + px;
+        foto.style.left = auto;
+    } else if (e.length == 2 && e[0] == "R") {
         cut.style.left = new absolute(cut).left() + px;
         cut.style.right = auto;
-        foto_move.style.left = new absolute(foto_move).left() + px;
-        foto_move.style.right = auto;
-        foto_rotate.style.left = new absolute(foto_rotate).left() + px;
-        foto_rotate.style.right = auto;
+        foto.style.left = new absolute(foto).left() + px;
+        foto.style.right = auto;
     }
 
-    if (e[1] == "T" || e[0] == "T") {
-        console.log(new absolute(cut).bottom());
+    if (e.length == 2 && e[1] == "T") {
         cut.style.bottom = new absolute(cut).bottom() + px;
         cut.style.top = auto;
-        foto_move.style.bottom = new absolute(foto_move).bottom() + px;
-        foto_move.style.top = auto;
-        foto_rotate.style.bottom = new absolute(foto_rotate).bottom() + px;
-        foto_rotate.style.top = auto;
-    } else if (e[1] == "B" || e[0] == "B") {
+        foto.style.bottom = new absolute(foto).bottom() + px;
+        foto.style.top = auto;
+    } else if (e.length == 2 && e[1] == "B") {
         cut.style.top = new absolute(cut).top() + px;
         cut.style.bottom = auto;
-        foto_move.style.top = new absolute(foto_move).top() + px;
-        foto_move.style.bottom = auto;
-        foto_rotate.style.top = new absolute(foto_rotate).top() + px;
-        foto_rotate.style.bottom = auto;
+        foto.style.top = new absolute(foto).top() + px;
+        foto.style.bottom = auto;
     }
+
+    if (e.length == 1 && e[0] == "L") {
+        cut.style.right = new absolute(cut).right() + px;
+        cut.style.left = auto;
+        foto.style.right = new absolute(foto).right() + px;
+        foto.style.left = auto;
+        cut.style.bottom = new absolute(cut).bottom() + px;
+        foto.style.bottom = new absolute(foto).bottom() + px;
+        cut.style.top = new absolute(cut).top() + px;
+        foto.style.top = new absolute(foto).top() + px;
+    }
+
+    if (e.length == 1 && e[0] == "R") {
+        cut.style.left = new absolute(cut).left() + px;
+        cut.style.right = auto;
+        foto.style.left = new absolute(foto).left() + px;
+        foto.style.right = auto;
+        cut.style.bottom = new absolute(cut).bottom() + px;
+        foto.style.bottom = new absolute(foto).bottom() + px;
+        cut.style.top = new absolute(cut).top() + px;
+        foto.style.top = new absolute(foto).top() + px;
+    }
+    if (e.length == 1 && e[0] == "T") {
+        cut.style.bottom = new absolute(cut).bottom() + px;
+        cut.style.top = auto;
+        foto.style.bottom = new absolute(foto).bottom() + px;
+        foto.style.top = auto;
+        cut.style.right = new absolute(cut).right() + px;
+        foto.style.right = new absolute(foto).right() + px;
+        cut.style.left = new absolute(cut).left() + px;
+        foto.style.left = new absolute(foto).left() + px;
+    }
+    if (e.length == 1 && e[0] == "B") {
+        cut.style.top = new absolute(cut).top() + px;
+        cut.style.bottom = auto;
+        foto.style.top = new absolute(foto).top() + px;
+        foto.style.bottom = auto;
+        cut.style.right = new absolute(cut).right() + px;
+        foto.style.right = new absolute(foto).right() + px;
+        cut.style.left = new absolute(cut).left() + px;
+        foto.style.left = new absolute(foto).left() + px;
+    }
+
+
 
     ajustHolderFotoCut(cut)
     clip(cut)
