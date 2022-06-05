@@ -1,4 +1,4 @@
- let start_ = { x: 0, y: 0, cut: { x: 0, y: 0, w: 0, h: 0 } }
+ let start_ = { x: 0, y: 0, container: { x: 0, y: 0, w: 0, h: 0 } }
 
 
  function START() {
@@ -11,9 +11,17 @@
      let y = ev[0].clientY;
 
      if (ev.length == 1) {
-         start_.x = x - new absolute(foto_move).left();
-         start_.y = y - new absolute(foto_move).top();
+
+
+         start_.x = x - fotoX
+         start_.y = y - fotoY
+
+
+
      }
+
+
+     opacity.style.opacity = 0.5
  }
 
  function MOVE() {
@@ -25,11 +33,15 @@
      let y = ev[0].clientY;
 
      if (ev.length == 1) {
-         foto_move.style.left = x - start_.x + px
-         foto_move.style.top = y - start_.y + px
+
+         fotoX = (x - start_.x);
+         fotoY = (y - start_.y);
+
+         svgMove()
+
      }
  }
 
  function END() {
-
+     opacity.style.opacity = 0.7;
  }

@@ -11,6 +11,7 @@
     <script type="text/javascript" src="ajust.cut.js"></script>
     <script type="text/javascript" src="ajust.move.js"></script>
     <script type="text/javascript" src="rule_45deg.js"></script>
+    <script type="text/javascript" src="draw.js"></script>
 </head>
 
 <body oncontextmenu="false">
@@ -44,8 +45,13 @@
     </div>
 
     <div id="cut">
-        <img id="foto">
+        <svg id="foto" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <image id="foto_image" ></image>
+        </svg>
+
     </div>
+
+    <img id="init-foto">
 
 
     <div id="size_div"></div>
@@ -87,13 +93,31 @@
         height: 100%;
         background: #000;
         position: absolute;
-        opacity: 0.8;
+        opacity: 0.7;
         z-index: 2;
     }
     
-    #canvas {
+    #init-foto {
+        z-index: 7;
+        position: absolute;
+        max-width: calc(100% - 20px);
+        max-height: calc(100% - 110px);
+        opacity: 0;
+    }
+    
+    #foto {
+        z-index: 1;
+        position: absolute;
         width: 100%;
         height: 100%;
+        opacity: 1;
+        background: #00f;
+        overflow: visible;
+    }
+    
+    #foto_image {
+        width: calc(100%);
+        height: calc(100%);
     }
     
     #cut {
@@ -109,14 +133,6 @@
         outline: #4499ff 2px solid;
         position: absolute;
         z-index: 3;
-    }
-    
-    #foto {
-        display: block;
-        width: 100%;
-        height: 100%;
-        opacity: 1;
-        position: relative;
     }
     
     #size_div {
@@ -291,29 +307,97 @@
 
 
 <script>
+    let init_foto = document.querySelector("#init-foto");
+
+
     let holder_foto = document.querySelector("#holder_foto");
     let opacity = document.querySelector("#opacity");
     let size_div = document.querySelector("#size_div");
     let body = document.querySelector("body");
+
     let foto = document.querySelector("#foto");
+    let foto_image = document.querySelector("#foto_image");
+
     let cut = document.querySelector("#cut");
     let size = document.querySelectorAll(".sizes-viewport");
 
 
 
+    let containerX = 0;
+    let containerY = 0;
+    let fotoX = 0;
+    let fotoY = 0;
+
+    let lastDx = 0;
+    let lastDy = 0;
+
+    let factor = 0;
+    let deg45 = 0;
+
+    let img = new Image();
+    img.src = "c.jpg";
+
+    init_foto.src = img.src;
+
+    img.onload = function() {
+
+        cut.style.width = init_foto.getBoundingClientRect().width + px;
+        cut.style.height = init_foto.getBoundingClientRect().height + px;
+
+        init_foto.remove();
+        draw();
 
 
-    foto.src = "a.jpg";
-
-    foto.onload = function() {
-        load()
-    }
-    window.onresize = function() {
-        load()
     }
 
     function load() {
         ajustCut();
         ajustPointSize();
+
+    }
+
+
+
+
+
+    function initSvg(src) {
+
+
+        /* foto.style.width = body.clientWidth + px;
+        foto.style.height = body.clientHeight + px;
+        foto.style.left = -cut.getBoundingClientRect().left + px;
+        foto.style.top = -cut.getBoundingClientRect().top + px;
+*/
+        foto.setAttribute("viewBox", `0 0 ${foto.clientWidth} ${foto.clientHeight}`);
+        foto_image.setAttribute("href", src);
+
+        let fx = foto.getBoundingClientRect().width / 2;
+        let fy = foto.getBoundingClientRect().height / 2;
+
+
+        foto_image.setAttribute('transform', ` translate(${fx},${fy}) rotate(${deg45})`)
+        foto_image.style.x = -fx;
+        foto_image.style.y = -fy;
+
+        load();
+    }
+
+
+
+
+    function svgMove() {
+
+        foto.setAttribute("viewBox", `0 0 ${foto.clientWidth} ${foto.clientHeight}`);
+
+
+        let fx = foto.getBoundingClientRect().width / 2;
+        let fy = foto.getBoundingClientRect().height / 2;
+
+
+        foto_image.setAttribute('transform', `   translate(${fx+ fotoX},${fy+ fotoY}) rotate(${deg45})`)
+        foto_image.style.x = -fx;
+        foto_image.style.y = -fy;
+
+        load();
     }
 </script>

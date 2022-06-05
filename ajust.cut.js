@@ -6,15 +6,6 @@ function ajustCut() {
     cut.style.left = restar(cut.clientWidth, body.clientWidth) / 2 + px;
     cut.style.top = restar(cut.clientHeight, body.clientHeight) / 2 + px;
 
-    foto.style.width = cut.clientWidth + px;
-    foto.style.height = cut.clientHeight + px;
-
-    foto.style.minWidth = cut.clientWidth + px;
-    foto.style.minHeight = cut.clientHeight + px;
-
-    foto.style.position = "absolute";
-
-
 
     ajustHolderFotoCut(cut);
 

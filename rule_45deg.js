@@ -65,10 +65,12 @@ class rule45deg extends HTMLElement {
                 deg = 0;
             }
             indicator.textContent = deg.toFixed(1);
-            foto.style.transform = `rotateZ(${deg}deg)`;
+
+            deg45 = deg;
+
+            svgMove()
+
         }
-
-
 
     }
 

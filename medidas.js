@@ -60,3 +60,11 @@ function division(a, b) {
 function restar(a, b) {
     return a > b ? a - b : b - a;
 }
+
+function mayor(a, b) {
+    return a > b ? a : b;
+}
+
+function menor(a, b) {
+    return a < b ? a : b;
+}
